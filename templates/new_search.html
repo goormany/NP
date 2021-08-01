@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> {% extends 'flatpages/base.html' %} {% load custom_filters %}
+    <meta charset="UTF-8">
+    <title>{%block title%} Search NEWS {%endblock title%}</title>
+</head>
+<body>
+{%block content%}
+
+    <form method="GET">
+    {{ filter.form }}
+    <input type="submit" value="Найти">
+    </form>
+    <hr>
+
+
+    {% for new in filter.qs %}
+    <p style="text-align: right;">Дата публикации: {{new.data}}</p>
+    <h3><span style="color: #000000;"><a style="color: #000000;" href="{% url 'news_detail' new.id %}">{{new.title|censor_filter}}</a></span></h3>
+    <br>
+    {%if new.photo%}
+        <img src="{{new.photo.url}}" width="350">
+    {%else%}
+
+    {%endif%}
+    <br>
+    <h5>{{new.text|truncatechars:50|censor_filter}}</h5>
+    <p style="text-align: right;">Пост опубликован: {{new.PostAuthor}}-ом</p>
+    <p style="text-align: right;"><span style="text-align: right; color: #0000ff;">Рейтинг статьи: {{new.rating}}</span></p>
+    <hr>
+    {% endfor %}
+
+{%endblock content%}
+</body>
+</html>

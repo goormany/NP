@@ -1,0 +1,37 @@
+{% extends 'flatpages/base.html' %}
+{% load custom_filters %}
+{% block title %} Список категории {% endblock title %}
+{% block content %}
+{% if categories %}
+    <table class="detail_table table">
+        <tr>
+            <td class='detail_column column'>
+                Название категории
+            </td>
+            <td class='detail_column column'>
+                Состояние
+            </td>
+        </tr>
+        {% for category in categories %}
+            <tr>
+                <td>
+                    {{ category }}
+                </td>
+                <td>
+                    {% if user in category.subscribers.all %}
+                        <form action="{% url 'unsubscribe' category.id %}">
+                            <input type="submit" class="btn btn-secondary " value="Отписаться"/>
+                        </form>
+                    {% else %}
+                        <form action="{% url 'subscribe' category.id %}">
+                            <input type="submit" class="btn btn-primary " value="Подписаться">
+                        </form>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+<h1>No catigories</h1>
+{% endif %}
+{% endblock content %}

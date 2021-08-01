@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Update.html</title>
+</head>
+<body>
+    <h2>Ув. читатель {{ new.postAuthor }} ,</h2>
+    <<a href="{{site}}{{ post.get_absolute_url }}" class="btn btn-primary">Перейти к посту</a>
+    <p>Новая публикация <i>   </i> в категории {{ previewName }} по ссылке http://127.0.0.1:8000/news/{{ news.id }}<br>Сайт публикаций</p>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'flatpages/base.html' %}
+{% load custom_filters %}
+
+
+{% block title %}
+
+NEW_UPDATE
+
+{% endblock title %}
+
+{% block content %}
+<div style="text-align: center">
+    <h3>Редактировать информацию о статье и\или новости</h3>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            {{form.media}}
+            {{ form.as_p }}
+        </div>
+        <input type="submit" class="btn btn-warning" value="Редактировать">
+    </form>
+</div>
+
+{% endblock content %}
