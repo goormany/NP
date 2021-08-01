@@ -1,10 +1,9 @@
-from django.http import HttpResponse
 from .models import *
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, View
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .filters import newsFilter
 from .forms import *
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
-from django.shortcuts import redirect, render, reverse
+from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 
